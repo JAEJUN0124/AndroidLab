@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="242dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="242dp"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleMarginBottom="50dp"
+                app:expandedTitleMarginStart="48dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="AppBar Title">
+
+                <ImageView
+                    android:id="@+id/backdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"/>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="#00000000"
+                    android:elevation="4dp"
+                    app:theme="@style/ToolbarIconColor"
+                    app:subtitleTextColor="#FFFFFF"
+                    app:layout_collapseMode="pin"/>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:background="#00000000"
+                    app:layout_collapseMode="parallax"
+                    app:tabMode="scrollable"
+                    app:tabTextColor="#FFFFFF"/>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Extended FAB"
+            app:icon="@android:drawable/ic_input_add"
+            app:layout_anchor="@id/viewpager"
+            app:layout_anchorGravity="bottom|right"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/main_drawer_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/menu_navigation"/>
+
+    <!--
+    ## XML 레이아웃 구조 요약 ##
+
+    이 XML 파일은 머티리얼 디자인의 동적인 UI를 구성합니다.
+    사용자가 콘텐츠를 스크롤하면 상단 앱 바가 자연스럽게 접히는 효과가 특징입니다.
+
+    1.  **DrawerLayout**: 최상위 레이아웃으로, 메인 콘텐츠와 슬라이드 메뉴(NavigationView)를 포함하는 컨테이너 역할을 합니다.
+    2.  **CoordinatorLayout**: 메인 콘텐츠 영역을 담당하며, 자식 뷰들 간의 복잡한 스크롤 상호작용을 관리합니다. '스크롤하면 툴바가 작아지는 효과'는 이 레이아웃 덕분에 가능합니다.
+    3.  **AppBarLayout & CollapsingToolbarLayout**: 스크롤에 반응하는 상단 영역입니다. 내부의 Toolbar는 접힌 후에도 상단에 고정되고, ImageView와 TabLayout은 스크롤과 함께 사라집니다.
+    4.  **ViewPager2**: 실제 콘텐츠가 표시되는 부분으로, 좌우로 스와이프 가능한 페이지들을 담습니다. 이 뷰의 스크롤 이벤트가 `app:layout_behavior` 속성을 통해 AppBarLayout에 전달되어 접히는 효과를 트리거합니다.
+    5.  **NavigationView**: 화면 왼쪽에서 나타나는 슬라이드 메뉴(내비게이션 드로어) UI입니다.
+    -->
+
+  </androidx.drawerlayout.widget.DrawerLayout>
