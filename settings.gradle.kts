@@ -23,4 +23,4 @@ rootProject.name = "AndroidLab"
 include(":app")
 include(":app:ch12_material")
 include(":app:ch13_activity")
-include(":ch14_receiver")
+include(":app:ch14_receiver")
