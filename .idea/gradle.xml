@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app/ch12_material" />
             <option value="$PROJECT_DIR$/app/ch13_activity" />
+            <option value="$PROJECT_DIR$/ch14_receiver" />
           </set>
         </option>
       </GradleProjectSettings>
